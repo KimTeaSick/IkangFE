@@ -1,17 +1,11 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Alert,
-  Platform,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, Alert, Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../AppInner';
 import {useAppDispatch} from '../store';
 import userSlice from '../slices/user';
+import MainButton from '../components/MainButton';
 
 type MainInScreenProps = NativeStackScreenProps<RootStackParamList, 'Main'>;
 
@@ -19,8 +13,8 @@ const Main = ({navigation}: MainInScreenProps) => {
   const isIos = Platform.OS === 'ios';
   const dispatch = useAppDispatch();
 
-  const goNotice = () => {
-    navigation.navigate('Notice');
+  const goNotice = (goal: string) => {
+    navigation.navigate(goal);
   };
 
   const logout = () => {
@@ -59,12 +53,16 @@ const Main = ({navigation}: MainInScreenProps) => {
         />
       </Text>
       <View style={styles.contents}>
-        <TouchableOpacity onPress={goNotice} style={styles.icon}>
-          <Text>
-            <Icon name="megaphone-outline" size={70} color="#f4a555" />
-          </Text>
-          <Text>공지사항</Text>
-        </TouchableOpacity>
+        <MainButton
+          iconName="megaphone-outline"
+          event={() => goNotice('Notice')}
+          title="공지사항"
+        />
+        <MainButton
+          iconName="people"
+          event={() => goNotice('Group')}
+          title="그룹보기"
+        />
       </View>
     </View>
   );

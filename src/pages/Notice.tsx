@@ -2,13 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {View, StatusBar, Platform} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import Badge from '../components/Badge';
-import TodayNotice from '../components/TodayNotice';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {styles} from './Notice.styled';
 import {RootStackParamList} from '../../AppInner';
+import TodayNotice from '../components/TodayNotice';
 import {getNoticeListThunk} from '../lib/noticeApis';
 import {RootReducerType} from '../store/rootReducer';
-import {styles} from './Notice.styled';
 import EntireNotice from '../components/EntireNotice';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 type SignInScreenProps = NativeStackScreenProps<RootStackParamList, 'Notice'>;
 
