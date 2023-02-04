@@ -51,35 +51,35 @@ function SignIn({navigation}: SignInScreenProps) {
     };
     setLoading(true);
 
-    // APIs.signIn(params)
-    //   .then(res => {
-    //     Alert.alert('알림', '로그인 되었습니다.');
-    //     setLoading(false);
-    //     dispatch(
-    //       userSlice.actions.setUser({
-    //         email: res[0].EMAIL,
-    //         name: res[0].NAME,
-    //         number: res[0].NUMBER,
-    //         password: res[0].PASSWORD,
-    //         sortation: res[0].SORTATION,
-    //         userIdx: res[0].USER_IDX,
-    //       }),
-    //     );
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     Alert.alert('알림', '잠시후에 다시 시도해주세요');
-    //     setLoading(false);
-    //   });
+    APIs.signIn(params)
+      .then(res => {
+        Alert.alert('알림', '로그인 되었습니다.');
+        setLoading(false);
+        dispatch(
+          userSlice.actions.setUser({
+            email: res[0].EMAIL,
+            name: res[0].NAME,
+            number: res[0].NUMBER,
+            password: res[0].PASSWORD,
+            sortation: res[0].SORTATION,
+            userIdx: res[0].USER_IDX,
+          }),
+        );
+      })
+      .catch(err => {
+        console.log(err);
+        Alert.alert('알림', '잠시후에 다시 시도해주세요');
+        setLoading(false);
+      });
 
     //server 닫겨 있을 때\
-    dispatch(
-      userSlice.actions.setUser({
-        email: 'test@gmail.com',
-        sortation: 1, // 강사
-        // sortation: 2, // 학생
-      }),
-    );
+    // dispatch(
+    //   userSlice.actions.setUser({
+    //     email: 'test@gmail.com',
+    //     sortation: 1, // 강사
+    //     // sortation: 2, // 학생
+    //   }),
+    // );
 
     // 토큰 발급 시 스토리지 사용
     // await EncryptedStorage.setItem(

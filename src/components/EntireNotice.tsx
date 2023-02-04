@@ -12,30 +12,26 @@ interface EntireNoticeProps {
   navigation: any;
 }
 const EntireNotice: FC<EntireNoticeProps> = ({noticeList, navigation}) => {
+  console.log(noticeList);
+
   return (
     <View style={styles.notice}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {noticeList.length &&
-          noticeList.map((item: NoticeType) => {
-            return (
-              <TouchableOpacity
-                style={styles.contents}
-                key={item.NOTICE_IDX}
-                onPress={() =>
-                  navigation.navigate('NoticeDetail', {
-                    idx: item.NOTICE_IDX,
-                  })
-                }>
-                <Text style={styles.Title}>{item.TITLE}</Text>
-                <Text
-                  ellipsizeMode="tail"
-                  numberOfLines={3}
-                  style={styles.Content}>
-                  {item.CONTENT}
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
+        {noticeList?.map((item: NoticeType) => (
+          <TouchableOpacity
+            style={styles.contents}
+            key={item.NOTICE_IDX}
+            onPress={() =>
+              navigation.navigate('NoticeDetail', {
+                idx: item.NOTICE_IDX,
+              })
+            }>
+            <Text style={styles.Title}>{item.TITLE}</Text>
+            <Text ellipsizeMode="tail" numberOfLines={3} style={styles.Content}>
+              {item.CONTENT}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
     </View>
   );

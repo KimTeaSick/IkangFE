@@ -1,7 +1,6 @@
 export type NoticeInitialState = {
   noticeList: NoticeType[];
   noticeListStatus: string;
-
   detailNotice: NoticeType;
   detailNoticeStatus: string;
 };

@@ -5,6 +5,8 @@ import NoticeDetail from './src/pages/NoticeDetail';
 import Group from './src/pages/Group';
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useSelector} from 'react-redux';
+import {RootState} from './src/store/reducer';
 
 export type RootStackParamList<T = Array<string | number>> = {
   SignIn: undefined;
@@ -20,8 +22,8 @@ export type RootStackParamList<T = Array<string | number>> = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function AppInner() {
-  // const isLoggedIn = useSelector((state: RootState) => !!state.user.email);
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector((state: RootState) => !!state.user.email);
+  // const isLoggedIn = true;
   return isLoggedIn ? (
     <Stack.Navigator>
       <Stack.Screen

@@ -2,6 +2,10 @@ apply plugin: "com.android.application"
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 import com.android.build.OutputFile
 
+//google
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -192,6 +196,10 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+
+    //google
+    implementation 'com.google.firebase:firebase-messaging:20.2.3'
+    implementation 'com.google.firebase:firebase-core:19.0.0'
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 

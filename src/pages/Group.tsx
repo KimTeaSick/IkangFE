@@ -13,6 +13,7 @@ const Group: FC = () => {
   const {groupList} = useSelector((state: RootReducerType) => state.group);
 
   const [visible, setVisible] = useState(false);
+  const [groupIdx, setGroupIdx] = useState<number>();
 
   console.log(groupList);
 
@@ -24,16 +25,23 @@ const Group: FC = () => {
     <Page>
       <Text style={styles.title}>그룹 보기</Text>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {groupList.map((group: GroupType) => (
+        {groupList.map((group: GroupType, index: number) => (
           <GroupCard
-            key={group.GROUP_IDX}
+            key={index}
             name={group.NAME}
             comment={group.COMMENT}
-            event={() => setVisible(!visible)}
+            event={() => {
+              setVisible(!visible);
+              setGroupIdx(group.GROUP_IDX);
+            }}
           />
         ))}
       </ScrollView>
-      <GroupDetailModal visible={visible} />
+      <GroupDetailModal
+        visible={visible}
+        setVisible={setVisible}
+        groupIdx={groupIdx}
+      />
     </Page>
   );
 };

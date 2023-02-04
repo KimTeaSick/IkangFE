@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   notice: {
-    alignItems: 'center',
     padding: '5%',
   },
   contents: {
